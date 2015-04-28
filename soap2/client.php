@@ -1,10 +1,10 @@
 <?php 
 class Client
 {
-    public function getSpain()
+    public function getTeam($team)
     {
         $client = new SoapClient("http://footballpool.dataaccess.eu/data/info.wso?WSDL");  
-        $arr = array("sTeamName" => "Spain");
+        $arr = array("sTeamName" => $team);
         $team = $client -> FullTeamInfo($arr);
         //$result = $team['FullTeamInfoResult']['sCoach'];
 		$result = "<ul>". $team -> FullTeamInfoResult -> sName;
