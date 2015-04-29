@@ -6,7 +6,6 @@ class Client
         $client = new SoapClient("http://footballpool.dataaccess.eu/data/info.wso?WSDL");  
         $arr = array("sTeamName" => $team);
         $team = $client -> FullTeamInfo($arr);
-        //$result = $team['FullTeamInfoResult']['sCoach'];
 		$result = "<ul>". $team -> FullTeamInfoResult -> sName;
         $result .= "<li> Coach: ". $team -> FullTeamInfoResult -> sCoach ."</li>";
 		$result .= "<ol> Goalkeepers";
