@@ -60,7 +60,7 @@
 
 <service name='StockQuoteService'> 
  <port name='StockQuotePort' binding='StockQuoteBinding'> 
-  <soap:address location='http://localhost/~user8/auto_shop/server/server.php'/> 
+     <soap:address location='http://192.168.0.15/~user8/SOAP/auto_shop/server/server.php'/> 
  </port> 
 </service> 
 </definitions>
