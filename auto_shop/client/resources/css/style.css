@@ -1,115 +1,15 @@
-/* background body fon */
-body {
-	background: linear-gradient(to top right, #4682B4 10%, #4169E1 30%, #1E90FF 50%, #6495ED 75%) fixed;
-}
-.loginForm {
-	margin-top: 50px;
-}
-.navbar {
-	padding: 15px 25px;
-	border-radius: 15px;
-}
-.dnk_leftMenu {
-	background-color: white;
-	border-radius: 15px;
-	margin: 40% 15px;
-	padding: 30px 30px;
-}
-.container-fluid {
-    background-color: white;
-	border-radius: 15px 15px 0 0;
-}
-/* календарь */
-table.calendar    {
-    border-left:1px solid #999;
+.dnk_main {
 	width: 100%;
-	margin: 20px 0;
+	height: 500px;
 }
-tr.calendar-row  {
-    height: 120px;
-  }
-td.calendar-day  { 
-    vertical-align: top;
+.dnk_main img {
+	width: 80%;
+	height: 90%;
+	margin: 0 10%;
 }
-td.calendar-day:hover  { 
-    background: grey; 
-}
-td.calendar-day-np  { 
-    background:#eee; 
-}
-td.calendar-day-head { 
-    background: #00BFFF; 
-    font-weight:bold; 
-    text-align:center;
-	min-width: 14%;
-    width:14%; 
-    border-bottom:1px solid #999; 
-    border-top:1px solid #999; 
-    border-right:1px solid #999; 
-	font-size: 20px;
-}
-div.day-number { 
-	background: #87CEFF;
-	padding: 5px 0;
-	color: #000;
-	font-weight: bold;
+.dnk_main p, a {
 	text-align: center;
-	font-size: 15px;
 }
-td.calendar-day, td.calendar-day-np { 
-    width:20px;
-    border-bottom:1px solid #999;
-    border-right:1px solid #999; 
-}
-.calendarDate {
-    text-align: center;
-}
-a {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: none;
-}
-form {
-    margin: 30px;
-}
-table.table {
-	margin: 30px;
-	width: 95%;
-}
-#yes {
-	display: none;
-}
-.layer {
-	overflow-y: auto;
-	max-height: 70%;
-	text-align: center;
-	position: relative;
-}
-.eventHref {
-	font-size: 10pt;
-}
-.detailsHead {
-	text-align: center;
-	margin: 30px;
-	border: 1px solid black;
-	background-color: #00EE76;
-}
-.detailsNames {
-	border: 1px solid black;
-	background-color: #8DEEEE;
-	line-height: 30px;
-	font-weight: bold;
-}
-.detailsValues {
-	background-color: white;
-	text-align: center;
-	line-height: 28px;
-	font-weight: bold;
-	padding: 3px;
-	margin: 0 10px;
-}
-td a {
-	color: black;
-	font-weight: bold;
+.price {
+	width: 150px;
 }

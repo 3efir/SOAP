@@ -4,21 +4,51 @@ class Client
     protected $client;
     public function __construct()
     {
-        $this -> client = new SoapClient("../server/test.wsdl");                  
+        $this -> client = new SoapClient(SOAPWSDL);                  
     }
     public function getAllCars()
     {
         try
-        {  
-            echo "<pre>\n";  
-            print($this -> client -> getQuote("ibm"));  
-            echo "\n"; 
-	        print($this -> client -> myMethod()); 	
+        {
+	        return $this -> client -> getAllCars(); 	
         }
         catch (SoapFault $exception) 
         {  
-            echo $exception;        
+            return $exception;        
         }
     }
+	public function getDetail($id)
+	{
+		try
+        {
+	        return $this -> client -> getDetail($id); 	
+        }
+        catch (SoapFault $exception) 
+        {  
+            return $exception;        
+        }
+	}
+	public function order($id, $fname, $lname, $payType)
+	{
+		try
+		{
+			return $this -> client -> order($id, $fname, $lname, $payType);
+		}
+		catch (SoapFault $exception) 
+        {  
+            return $exception;        
+        }
+	}
+	public function getData()
+	{
+		try
+		{
+			return $this -> client -> getData();
+		}
+		catch (SoapFault $exception) 
+        {  
+            return $exception;        
+        }
+	}
 }  
 ?>
