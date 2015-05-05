@@ -1,3 +1,2 @@
 RewriteEngine on
-RewriteBase /~user8/SOAP/auto_shop/client/
 RewriteRule !\.(js|gif|png|jpg|css)$ index.php

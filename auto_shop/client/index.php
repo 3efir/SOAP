@@ -6,8 +6,8 @@ set_include_path(get_include_path()
 				.PATH_SEPARATOR.'controllers/commandControllers'
 				.PATH_SEPARATOR.'models/interfaces'
 				.PATH_SEPARATOR.'models/utilities'
-                .PATH_SEPARATOR.'models/validators'
-                .PATH_SEPARATOR.'models/soap'
+				.PATH_SEPARATOR.'models/validators'
+				.PATH_SEPARATOR.'models/soap'
 				.PATH_SEPARATOR.'views');
 require_once "config/config.php";
 function __autoload($class){

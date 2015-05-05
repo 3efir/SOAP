@@ -36,6 +36,23 @@ class HtmlHelper
 			$result .= FrontController::templateRender($file, $arr);
 		}
 		return $result;
+/* 		$res = array();
+		foreach($data-> Map -> item as $k => $v)
+		{
+			$res[$v->key] = $v->value;
+		}
+		$file = file_get_contents('resources/templates/detail.html');
+		$arr = array('%IMG%' => $res['photo'],
+					'%BRAND%' => $res['brand'],
+					'%ID%' => $res['id'],
+					'%MODEL%' => $res['model'],
+					'%YEAR%' => $res['year'],
+					'%CAPACITY%' => $res['capacity'],
+					'%COLOR%' => $res['color'],
+					'%PRICE%' => $res['price'],
+					'%SPEED%' => $res['speed']);
+		$result = FrontController::templateRender($file, $arr);
+		return $result; */
 	}
 	public function options($data, $name)
 	{

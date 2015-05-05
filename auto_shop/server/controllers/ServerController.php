@@ -17,11 +17,16 @@ class ServerController
 	}
 	public function order($id, $fname, $lname, $payType)
 	{
+		echo $id;
 		return $this -> facade -> saveOrder($id, $fname, $lname, $payType);
 	}
 	public function getData()
 	{
 		return $this -> facade -> getData();
+	}
+	public function search($model, $year, $capacity, $color, $speed, $price)
+	{
+		echo $year;
 	}
 }  
 

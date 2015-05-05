@@ -22,7 +22,7 @@ class IndexView{
 	}
 	public function showDetail($data)
 	{
-		if(is_array($data))
+		if(!is_string($data))
 		{
 			$result = $this -> helper -> DetailPage($data);
 		}

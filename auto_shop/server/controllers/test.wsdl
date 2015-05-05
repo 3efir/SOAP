@@ -1,106 +1,161 @@
 <?xml version ='1.0' encoding ='UTF-8' ?> 
-<definitions name='StockQuote' 
+<definitions name='test' 
  targetNamespace='http://example.org/StockQuote' 
- xmlns:tns='http://example.org/StockQuote' 
+ xmlns:tns=' http://example.org/StockQuote ' 
  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
  xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
- xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+ xmlns='http://schemas.xmlsoap.org/wsdl/'>
+    <types>
+        <xs:schema 
+                   xmlns:tns="http://schemas.xmlsoap.org/wsdl/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   targetNamespace="">
+            <xs:complexType name="Type">
+                <xs:sequence>
+                    <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="year" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="capacity" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="color" type="xs:string" minOccurs="1" maxOccurs="1" />
+					<xs:element name="speed" type="xs:integer" minOccurs="1" maxOccurs="1" />
+					<xs:element name="price" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TypeList">
+                <xs:sequence>
+                    <xs:element name="Type" type="Type" minOccurs="1" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="TypeRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="TypeList" type="TypeList" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TypeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="TypeResponse" type="TypeResponse" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
 
-<message name='getDetailRequest'> 
- <part name='id' type='xsd:int'/> 
-</message> 
-<message name='getDetailResponse'> 
- <part name='Result' type='xsd:array'/> 
-</message> 
-<message name='getAllCarsRequest'> 
-</message> 
-<message name='getAllCarsResponse'> 
- <part name='Result' type='xsd:array'/> 
-</message>
-<message name='orderRequest'>
-<part name='id' type='xsd:int'/> 
-<part name='fname' type='xsd:string'/> 
-<part name='lname' type='xsd:string'/> 
-<part name='payType' type='xsd:string'/> 
-</message> 
-<message name='orderResponse'> 
- <part name='Result' type='xsd:string'/> 
-</message>
-<message name='getDataRequest'> 
-</message> 
-<message name='getDataResponse'> 
- <part name='Result' type='xsd:array'/> 
-</message>
+    <!-- Сообщения процедуры sendSms -->
+	<message name='getDetailRequest'> 
+	 <part name='id' type='xsd:int'/> 
+	</message> 
+	<message name='getDetailResponse'> 
+	 <part name='TypeResponse' type='xsd:TypeResponse'/> 
+	</message> 
+	<message name='getAllCarsRequest'> 
+	</message> 
+	<message name='getAllCarsResponse'> 
+	 <part name='Result' type='xsd:array'/> 
+	</message>
+	<message name='orderRequest'>
+	<part name='id' type='xsd:int'/> 
+	<part name='fname' type='xsd:string'/> 
+	<part name='lname' type='xsd:string'/> 
+	<part name='pay' type='xsd:string'/> 
+	</message> 
+	<message name='orderResponse'> 
+	 <part name='Result' type='xsd:string'/> 
+	</message>
+	<message name='getDataRequest'> 
+	</message> 
+	<message name='getDataResponse'> 
+	 <part name='Result' type='xsd:array'/> 
+	</message>
+	<message name='searchRequest'> 
+	 <part name='Type' element='tns:Type'/> 
+	</message> 
+	<message name='searchResponse'> 
+	 <part name='TypeResponse' element='tns:TypeResponse'/> 
+	</message> 
 
-<portType name='StockQuotePortType'> 
- <operation name='getDetail'> 
-  <input message='tns:getDetailRequest'/> 
-  <output message='tns:getDetailResponse'/> 
- </operation> 
-  <operation name='getAllCars'> 
-  <input message='tns:getAllCarsRequest'/> 
-  <output message='tns:getAllCarsResponse'/> 
- </operation> 
-   <operation name='order'> 
-  <input message='tns:orderRequest'/> 
-  <output message='tns:orderResponse'/> 
- </operation> 
-   <operation name='getData'> 
-  <input message='tns:getDataRequest'/> 
-  <output message='tns:getDataResponse'/> 
- </operation> 
-</portType> 
+    <!-- Привязка процедуры к сообщениям -->
+    <portType name="SmsServicePortType">
+		 <operation name='getDetail'> 
+		  <input message='tns:getDetailRequest'/> 
+		  <output message='tns:getDetailResponse'/> 
+		 </operation> 
+		<operation name='getAllCars'> 
+		  <input message='tns:getAllCarsRequest'/> 
+		  <output message='tns:getAllCarsResponse'/> 
+		 </operation> 
+		<operation name='order'> 
+		  <input message='tns:orderRequest'/> 
+		  <output message='tns:orderResponse'/> 
+		 </operation> 
+		<operation name='getData'> 
+		  <input message='tns:getDataRequest'/> 
+		  <output message='tns:getDataResponse'/> 
+		 </operation> 
+		 <operation name='search'> 
+		  <input message='tns:searchRequest'/> 
+		  <output message='tns:searchResponse'/> 
+		 </operation> 
+    </portType>
 
-<binding name='StockQuoteBinding' type='tns:StockQuotePortType'> 
- <soap:binding style='rpc' 
-  transport='http://schemas.xmlsoap.org/soap/http'/> 
- <operation name='getDetail'> 
-  <soap:operation soapAction='urn:xmethods-delayed-quotes#getDetail'/> 
-  <input> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </input> 
-  <output> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </output> 
- </operation> 
-  <operation name='getAllCars'> 
-  <soap:operation soapAction='urn:xmethods-delayed-quotes#getAllCars'/> 
-  <output> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </output> 
- </operation> 
-   <operation name='order'> 
-  <soap:operation soapAction='urn:xmethods-delayed-quotes#order'/> 
-  <input> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </input> 
-  <output> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </output> 
- </operation> 
-   <operation name='getData'> 
-  <soap:operation soapAction='urn:xmethods-delayed-quotes#getData'/> 
-  <input> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </input> 
-  <output> 
-   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
-    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
-  </output> 
- </operation> 
-</binding> 
+    <!-- Формат процедур веб-сервиса -->
+    <binding name="SmsServiceBinding" type="tns:SmsServicePortType">
+        <soap:binding style='rpc'  transport="http://schemas.xmlsoap.org/soap/http" />
+		 <operation name='getAllCars'> 
+		  <soap:operation soapAction='urn:xmethods-delayed-quotes#getAllCars'/> 
+		  <output> 
+		   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		  </output> 
+		 </operation>
+		 <operation name='order'> 
+		  <soap:operation soapAction='urn:xmethods-delayed-quotes#order'/> 
+		  <input> 
+		   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		  </input> 
+		  <output> 
+		   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		  </output> 
+		 </operation>
+		 <operation name="getDetail">
+            <soap:operation soapAction="" />
+            <input>
+				<soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+            </output>
+        </operation>
+		 <operation name='getData'> 
+		  <soap:operation soapAction='urn:xmethods-delayed-quotes#getData'/> 
+		  <output> 
+		   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+		  </output> 
+		 </operation>
+		 <operation name="search">
+            <soap:operation soapAction='urn:xmethods-delayed-quotes#search'/>
+            <input>
+				 <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+            </input>
+            <output>
+                <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+			encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+            </output>
+        </operation>
+    </binding>
 
-<service name='StockQuoteService'> 
- <port name='StockQuotePort' binding='StockQuoteBinding'> 
-  <soap:address location='http://localhost/~user8/auto_shop/server/controllers/ServerController.php'/> 
- </port> 
-</service> 
+    <!-- Определение сервиса -->
+    <service name="SmsService">
+        <port name="SmsServicePort" binding="tns:SmsServiceBinding">
+            <soap:address location="http://localhost/~user8/auto_shop/server/controllers/ServerController.php" />
+        </port>
+    </service>
 </definitions>

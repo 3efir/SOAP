@@ -35,6 +35,7 @@ class IndexController
 	public function searchAction()
 	{
 		print_r($_POST);
+		echo $data = $this -> facade -> search($_POST);
 	}
 }
 ?>

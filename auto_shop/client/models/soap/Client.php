@@ -1,4 +1,5 @@
 <?php
+ini_set("test.wsdl_cache_enabled", "0");
 class Client
 {
     protected $client;
@@ -44,6 +45,18 @@ class Client
 		try
 		{
 			return $this -> client -> getData();
+		}
+		catch (SoapFault $exception) 
+        {  
+            return $exception;        
+        }
+	}
+	public function search($arr)
+	{
+		try
+		{
+			return $this -> client -> search($arr['model'], $arr['year'], 
+			$arr['capacity'], $arr['color'], $arr['speed'], $arr['price']);
 		}
 		catch (SoapFault $exception) 
         {  

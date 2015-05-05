@@ -43,5 +43,14 @@ class MainFacade
 	{
 		return $this -> client -> getData(); 
 	}
+	public function search($arr)
+	{
+		$validArr = array();
+		foreach($arr as $k => $v)
+		{
+			$validArr[$k] = $this -> valid -> FilterFormValues($v);
+		}
+		return $this -> client -> search($validArr);
+	}
 }
 ?>
