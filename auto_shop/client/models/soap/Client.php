@@ -55,8 +55,7 @@ class Client
 	{
 		try
 		{
-			return $this -> client -> search($arr['model'], $arr['year'], 
-			$arr['capacity'], $arr['color'], $arr['speed'], $arr['price']);
+			return $this -> client -> search($arr);
 		}
 		catch (SoapFault $exception) 
         {  

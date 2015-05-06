@@ -53,5 +53,33 @@ class ServerFacade
 		auto ") -> selected();
 		return $result;
 	}
+	public function search($arr)
+	{
+		$result = $this -> DB -> SELECT(" a.id, a.model, a.photo, b.brand ") ->
+		from(" auto a ") -> inner(" brand b ") -> on(" a.brand_id = b.id ") ->
+		where(" a.year = ".$arr['year']." ");
+		if($arr['model'] !== '')
+		{
+			$result = $result -> whereAnd(" a.model = '".$arr['model']."' ");
+		}
+		if($arr['capacity'] !== '')
+		{
+			$result = $result -> whereAnd(" a.capacity = '".$arr['capacity']."' ");
+		}
+		if($arr['color'] !== '')
+		{
+			$result = $result -> whereAnd(" a.color = '".$arr['color']."' ");
+		}
+		if($arr['speed'] !== '')
+		{
+			$result = $result -> whereAnd(" a.speed = '".$arr['speed']."' ");
+		}
+		if($arr['price'] !== '')
+		{
+			$result = $result -> whereAnd(" a.price >= '".$arr['price']."' ");
+		}
+		$result = $result -> selected();
+		return $result;
+	}
 }
 ?>

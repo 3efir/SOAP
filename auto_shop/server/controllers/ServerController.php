@@ -24,9 +24,9 @@ class ServerController
 	{
 		return $this -> facade -> getData();
 	}
-	public function search($model, $year, $capacity, $color, $speed, $price)
+	public function search($arr)
 	{
-		echo $year;
+		return $this -> facade -> search($arr);
 	}
 }  
 
